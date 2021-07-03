@@ -1,0 +1,22 @@
+
+.mat-card{
+    max-width: 300px;
+    margin: auto;
+}
+
+.mat-card-avatar{
+    background: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.DOPXIG0laXnBIFP8mcSZEwHaGl%26pid%3DApi&f=1');
+    background-size: cover;
+}
+.mat-card img{
+    width: 290px;
+    height: 270px;
+    display: block;
+    margin: auto;
+}
+.mat-card-actions{
+    display: flex;
+}
+.flex-spacer{
+    flex: 1 1 auto;
+}
