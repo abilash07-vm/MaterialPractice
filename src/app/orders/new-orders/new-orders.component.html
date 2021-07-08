@@ -1,0 +1,38 @@
+<mat-card>
+  <mat-card-title>DatePicker</mat-card-title>
+  <mat-card-content>
+    <mat-form-field>
+      <input matInput placeholder="date" [matDatepicker]="myDatepicker" />
+      <mat-datepicker-toggle matSuffix [for]="myDatepicker">
+      </mat-datepicker-toggle>
+      <mat-datepicker #myDatepicker> </mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="filtering date"
+        [min]="mindate"
+        [matDatepicker]="filteredDate"
+      />
+      <mat-datepicker-toggle matSuffix [for]="filteredDate">
+      </mat-datepicker-toggle>
+      <mat-datepicker #filteredDate></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        [min]="mindate"
+        placeholder="Valid date"
+        [matDatepicker]="validDatepicker"
+        [formControl]="datectrl"
+      />
+      <mat-datepicker-toggle matSuffix [for]="validDatepicker">
+      </mat-datepicker-toggle>
+      <mat-datepicker #validDatepicker></mat-datepicker>
+      <mat-error align="end" *ngIf="datectrl.hasError('required')">
+        Date format should be mm/dd/yyyy
+      </mat-error>
+    </mat-form-field>
+  </mat-card-content>
+</mat-card>
