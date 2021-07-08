@@ -1,11 +1,11 @@
-:host{
-    background-color: #eee;
+:host {
+  background-color: #eee;
 }
 .mat-stepper-vertical {
-    max-width:600px;
-    margin:auto;
+  max-width: 600px;
+  margin: auto;
 }
 
 .mat-stepper-vertical .mat-form-field {
-    width:100%;
+  width: 100%;
 }
