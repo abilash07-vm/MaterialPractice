@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Select Your city</h1>
+<div mat-dialog-content>
+  <mat-radio-group [(ngModel)]="loc">
+    <mat-radio-button value="Chennai">Chennai</mat-radio-button>
+    <mat-radio-button value="Mumbai">Mumbai</mat-radio-button>
+    <mat-radio-button value="Bangalore">Bangalore</mat-radio-button>
+  </mat-radio-group>
+</div>
+<div>
+  <button matButton color="primary" [mat-dialog-close]="loc">SELECT</button>
+</div>

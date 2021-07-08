@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card-title>New Customer</mat-card-title>
+  <mat-card-content>
+    <form>
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="Email"
+          [formControl]="emailctrl"
+          [errorStateMatcher]="emailerror"
+        />
+        <mat-hint align="end">Hint: xyz@email.com</mat-hint>
+        <mat-error align="end" *ngIf="emailctrl.hasError('email')">
+          Please Enter the valid email address
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="openDialog()">
+      SAVE
+    </button>
+  </mat-card-actions>
+</mat-card>
