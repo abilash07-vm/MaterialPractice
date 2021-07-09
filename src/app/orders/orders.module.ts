@@ -13,7 +13,10 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatIconModule } from "@angular/material/icon";
+import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
+import { MatTableModule } from "@angular/material/table";
+import { MatSortModule } from "@angular/material/sort";
 
 @NgModule({
   declarations: [OrderListComponent, NewOrdersComponent],
@@ -30,7 +33,10 @@ import { MatMomentDateModule } from "@angular/material-moment-adapter";
     MatDatepickerModule,
     MatIconModule,
     MatButtonModule,
+    MatCheckboxModule,
     MatMomentDateModule,
+    MatTableModule,
+    MatSortModule,
   ],
 })
 export class OrdersModule {}
