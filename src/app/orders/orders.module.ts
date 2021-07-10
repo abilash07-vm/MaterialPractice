@@ -17,6 +17,7 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { MatTableModule } from "@angular/material/table";
 import { MatSortModule } from "@angular/material/sort";
+import { MatPaginatorModule } from "@angular/material/paginator";
 
 @NgModule({
   declarations: [OrderListComponent, NewOrdersComponent],
@@ -37,6 +38,7 @@ import { MatSortModule } from "@angular/material/sort";
     MatMomentDateModule,
     MatTableModule,
     MatSortModule,
+    MatPaginatorModule,
   ],
 })
 export class OrdersModule {}
