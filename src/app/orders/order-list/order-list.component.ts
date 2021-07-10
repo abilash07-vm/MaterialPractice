@@ -1,7 +1,9 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
-import { MatSort } from "@angular/material/sort";
-import { MatTableDataSource } from "@angular/material/table";
-import { PageEvent } from "@angular/material/paginator";
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { PageEvent } from '@angular/material/paginator';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 interface Order {
   orderDate: Date;
@@ -12,56 +14,56 @@ interface Order {
 }
 
 @Component({
-  selector: "app-order-list",
-  templateUrl: "./order-list.component.html",
-  styleUrls: ["./order-list.component.css"],
+  selector: 'app-order-list',
+  templateUrl: './order-list.component.html',
+  styleUrls: ['./order-list.component.css'],
 })
 export class OrderListComponent implements OnInit, AfterViewInit {
-  dummyData = [
-    {
-      orderDate: new Date(),
-      orderNumber: 100,
-      total: 29.99,
-      description: "2lbs of tuna",
-      isChecked: false,
-    },
-    {
-      orderDate: new Date(),
-      orderNumber: 101,
-      total: 39.99,
-      description: "5lbs of tuna",
-      isChecked: false,
-    },
-    {
-      orderDate: new Date(),
-      orderNumber: 102,
-      total: 59.99,
-      description: "1lbs of tuna",
-      isChecked: false,
-    },
-    {
-      orderDate: new Date(),
-      orderNumber: 103,
-      total: 39.99,
-      description: "5lbs of tuna",
-      isChecked: false,
-    },
-    {
-      orderDate: new Date(),
-      orderNumber: 104,
-      total: 59.99,
-      description: "1lbs of tuna",
-      isChecked: false,
-    },
-  ];
+  // dummyData = [
+  //   {
+  //     orderDate: new Date(),
+  //     orderNumber: 100,
+  //     total: 29.99,
+  //     description: '2lbs of tuna',
+  //     isChecked: false,
+  //   },
+  //   {
+  //     orderDate: new Date(),
+  //     orderNumber: 101,
+  //     total: 39.99,
+  //     description: '5lbs of tuna',
+  //     isChecked: false,
+  //   },
+  //   {
+  //     orderDate: new Date(),
+  //     orderNumber: 102,
+  //     total: 59.99,
+  //     description: '1lbs of tuna',
+  //     isChecked: false,
+  //   },
+  //   {
+  //     orderDate: new Date(),
+  //     orderNumber: 103,
+  //     total: 39.99,
+  //     description: '5lbs of tuna',
+  //     isChecked: false,
+  //   },
+  //   {
+  //     orderDate: new Date(),
+  //     orderNumber: 104,
+  //     total: 59.99,
+  //     description: '1lbs of tuna',
+  //     isChecked: false,
+  //   },
+  // ];
   ELEMENT_DATA: Order[] = [];
 
   displayedColumns: string[] = [
-    "action",
-    "orderNumber",
-    "orderDate",
-    "description",
-    "total",
+    'action',
+    'orderNumber',
+    'orderDate',
+    'description',
+    'total',
   ];
   length = this.ELEMENT_DATA.length;
   pageSize = 10;
@@ -71,7 +73,7 @@ export class OrderListComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource();
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
   }
@@ -84,11 +86,16 @@ export class OrderListComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    for (let i = 0; i < 20; i++) {
-      this.ELEMENT_DATA = this.ELEMENT_DATA.concat(this.dummyData);
-    }
-    this.loadData();
-    this.length = this.ELEMENT_DATA.length;
+    // for (let i = 0; i < 20; i++) {
+    //   this.ELEMENT_DATA = this.ELEMENT_DATA.concat(this.dummyData);
+    // }
+    this.http.get('assets/data/MOCK_DATA.json').subscribe((data: any) => {
+      console.log(data);
+
+      this.ELEMENT_DATA = data;
+      this.loadData();
+      this.length = this.ELEMENT_DATA.length;
+    });
   }
   selectAll() {
     for (var ele of this.ELEMENT_DATA) {
